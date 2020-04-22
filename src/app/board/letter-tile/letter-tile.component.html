@@ -1,2 +1,5 @@
-<div class="letter-tile">
+<div class="letter-tile" [ngClass]="{ 'has-letter' : tile !== ''}">
+    <div *ngIf="tile['guessed']">
+        {{tile["letter"]}}
+    </div>
 </div>

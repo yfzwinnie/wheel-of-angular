@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import * as data from '../../assets/data/boardLayout.json';
 
 @Component({
   selector: 'app-board',
@@ -7,16 +8,33 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BoardComponent implements OnInit {
   @Input() currentPuzzle: string;
-  boardRows = [12, 14, 14, 12];
+  boardLayout: [[number]] = (data as any).default; 
   board = [];
+
   constructor() { }
 
   createBoard() {
-    this.board = this.boardRows.map(row => {
-      return new Array(row).fill(null);
+    const puzzleArr = [...this.currentPuzzle];
+    let puzzleArrIndex = 0;
+    this.board = this.boardLayout.map(row => {
+      return row.map(number => {
+        if(puzzleArr[puzzleArrIndex] === ' ') {
+          puzzleArrIndex += 1;
+          return "";
+        } else if(number !== 0 && puzzleArrIndex !== puzzleArr.length) {
+          const tileObj = { 
+            letter: puzzleArr[puzzleArrIndex],
+            guessed: false
+          };
+          puzzleArrIndex += 1;
+          return tileObj;
+        } else {
+          return "";
+        }
+      })
     })
   }
-  
+
   ngOnInit(): void {
     this.createBoard();
   }

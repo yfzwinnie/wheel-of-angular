@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import * as data from '../../assets/data/boardLayout.json';
+import { EventEmitterService } from '../utils/event-emitter.service';
 
 @Component({
   selector: 'app-board',
@@ -11,7 +12,12 @@ export class BoardComponent implements OnInit {
   boardLayout: [[number]] = (data as any).default; 
   board = [];
 
-  constructor() { }
+  constructor(private eventEmitterService: EventEmitterService) { 
+    this.eventEmitterService.alphabetGuessed$
+      .subscribe(alphabet => 
+        this.showLetter(alphabet)
+      )
+  }
 
   createBoard() {
     const puzzleArr = [...this.currentPuzzle];
@@ -33,6 +39,17 @@ export class BoardComponent implements OnInit {
         }
       })
     })
+  }
+
+  showLetter(guess: string) {
+    this.board.forEach(row => 
+      row.forEach(boardLetter => {
+        if(boardLetter.letter && boardLetter.letter.toUpperCase() === guess) {
+          boardLetter.guessed = true;
+        }
+      })
+    )
+    console.log(this.board);
   }
 
   ngOnInit(): void {

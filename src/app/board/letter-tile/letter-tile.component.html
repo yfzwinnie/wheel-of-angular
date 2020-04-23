@@ -1,5 +1,5 @@
 <div class="letter-tile" [ngClass]="{ 'has-letter' : tile !== ''}">
-    <div *ngIf="tile['guessed']">
-        {{tile["letter"]}}
+    <div *ngIf="tile['guessed']" class="letter">
+        {{tile["letter"].toUpperCase()}}
     </div>
 </div>

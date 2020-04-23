@@ -1,6 +1,9 @@
 <div class="App">
   <header class="App-header">
-    <h1>Wheel of React!</h1>
-    <app-board [currentPuzzle]="currentPuzzle"></app-board>
+    <h1>Wheel of Angular!</h1>
   </header>
+  <app-board [currentPuzzle]="currentPuzzle"></app-board>
+  <div class="alphabet-tiles">
+    <app-alphabet *ngFor="let alphabet of alphabets" [alphabet]="alphabet" (guess)="onGuess($event)"></app-alphabet>
+  </div>
 </div>

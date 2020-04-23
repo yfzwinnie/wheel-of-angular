@@ -8,4 +8,11 @@
 
 .has-letter {
     background-color: white;
+
+    .letter {
+        text-align: center;
+        margin: 6px 0;
+        color: #111;
+        font-size: 60px;
+    }
 }

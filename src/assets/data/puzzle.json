@@ -1,5 +1,6 @@
 [
     "Dependency Injection",
     "Observables",
-    "Reactive Forms"
+    "Reactive Forms",
+    "Route Module"
 ]

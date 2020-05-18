@@ -12,10 +12,15 @@ export class AppComponent {
     .toUpperCase()
     .split('');
   isWaitingOnGuess: boolean;
+  currentSpinValue: number;
 
   constructor(public puzzleService: PuzzleService) {
     this.puzzleService._isWaitingOnGuess.subscribe((isWaitingOnGuess) => {
       this.isWaitingOnGuess = isWaitingOnGuess;
     });
+  }
+
+  updateSpinValue(evt: number):void {
+    this.currentSpinValue = evt;
   }
 }

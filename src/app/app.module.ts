@@ -8,6 +8,7 @@ import { LetterTileComponent } from './board/letter-tile/letter-tile.component';
 import { AlphabetComponent } from './alphabet/alphabet.component';
 import { PuzzleService } from './utils/puzzle.service';
 import { SpinZoneComponent } from './spin-zone/spin-zone.component';
+import { PlayerInfoComponent } from './player-info/player-info.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SpinZoneComponent } from './spin-zone/spin-zone.component';
     LetterTileComponent,
     AlphabetComponent,
     SpinZoneComponent,
+    PlayerInfoComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [PuzzleService],

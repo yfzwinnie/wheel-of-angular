@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { PuzzleService } from '../utils/puzzle.service';
 
 @Component({
@@ -10,6 +10,7 @@ export class SpinZoneComponent implements OnInit {
   spinValues = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
   currentSpinValue: number;
   isWaitingOnGuess: boolean;
+  @Output() updateSpinValue = new EventEmitter<number>();
 
   constructor(private puzzleService: PuzzleService) {
     this.puzzleService._isWaitingOnGuess.subscribe((isWaitingOnGuess) => {
@@ -21,6 +22,7 @@ export class SpinZoneComponent implements OnInit {
     const randomIndex = Math.floor(Math.random() * this.spinValues.length);
     this.currentSpinValue = this.spinValues[randomIndex];
     this.puzzleService.toggleWaitingOnGuess();
+    this.updateSpinValue.emit(this.currentSpinValue);
   }
 
   ngOnInit(): void {}

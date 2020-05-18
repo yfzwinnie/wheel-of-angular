@@ -7,13 +7,15 @@ import { BoardComponent } from './board/board.component';
 import { LetterTileComponent } from './board/letter-tile/letter-tile.component';
 import { AlphabetComponent } from './alphabet/alphabet.component';
 import { EventEmitterService } from './utils/event-emitter.service';
+import { SpinZoneComponent } from './spin-zone/spin-zone.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoardComponent,
     LetterTileComponent,
-    AlphabetComponent
+    AlphabetComponent,
+    SpinZoneComponent
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Subject }    from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class EventEmitterService {
+  private letterGuessSource = new Subject<string>();
+  letterGuessed$ = this.letterGuessSource.asObservable();
 
-  private alphabetGuessSource = new Subject<string>();
-  alphabetGuessed$ = this.alphabetGuessSource.asObservable();
-
-  guessAlphabet(alphabet: string) {
-    this.alphabetGuessSource.next(alphabet);
+  guessLetter(letter: string) {
+    this.letterGuessSource.next(letter);
   }
 }

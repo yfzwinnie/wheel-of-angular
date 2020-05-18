@@ -3,7 +3,11 @@
     <h1>Wheel of Angular!</h1>
   </header>
   <app-board [currentPuzzle]="currentPuzzle"></app-board>
+  <app-spin-zone></app-spin-zone>
   <div class="alphabet-tiles">
-    <app-alphabet *ngFor="let alphabet of alphabets" [alphabet]="alphabet" (guess)="onGuess($event)"></app-alphabet>
+    <app-alphabet
+      *ngFor="let alphabet of alphabets"
+      [alphabet]="alphabet"
+    ></app-alphabet>
   </div>
 </div>

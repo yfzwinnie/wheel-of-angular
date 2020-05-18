@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { EventEmitterService } from '../utils/event-emitter.service';
+import { PuzzleService } from '../utils/puzzle.service';
 
 @Component({
   selector: 'app-spin-zone',
@@ -9,18 +9,18 @@ import { EventEmitterService } from '../utils/event-emitter.service';
 export class SpinZoneComponent implements OnInit {
   spinValues = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
   currentSpinValue: number;
-  isWaitingOnGuess = false;
+  isWaitingOnGuess: boolean;
 
-  constructor(private eventEmitterService: EventEmitterService) {
-    this.eventEmitterService.letterGuessed$.subscribe((letter) => {
-      this.isWaitingOnGuess = false;
+  constructor(private puzzleService: PuzzleService) {
+    this.puzzleService._isWaitingOnGuess.subscribe((isWaitingOnGuess) => {
+      this.isWaitingOnGuess = isWaitingOnGuess;
     });
   }
 
   handleSpin(): void {
     const randomIndex = Math.floor(Math.random() * this.spinValues.length);
     this.currentSpinValue = this.spinValues[randomIndex];
-    this.isWaitingOnGuess = true;
+    this.puzzleService.toggleWaitingOnGuess();
   }
 
   ngOnInit(): void {}

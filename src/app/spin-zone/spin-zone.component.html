@@ -1,5 +1,7 @@
 <div id="spin-zone">
-  <button (click)="handleSpin()" [disabled]="isWaitingOnGuess">spin</button>
+  <button (click)="handleSpin()" [disabled]="isWaitingOnGuess">
+    spin
+  </button>
   <div id="current-spin-value">
     {{ currentSpinValue === 0 ? "Bankrupt" : currentSpinValue }}
   </div>

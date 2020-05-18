@@ -2,9 +2,9 @@
   <header class="App-header">
     <h1>Wheel of Angular!</h1>
   </header>
-  <app-board [currentPuzzle]="currentPuzzle"></app-board>
+  <app-board [currentPuzzle]="puzzleService.currentPuzzle"></app-board>
   <app-spin-zone></app-spin-zone>
-  <div class="alphabet-tiles">
+  <div class="alphabet-tiles" [hidden]="!isWaitingOnGuess">
     <app-alphabet
       *ngFor="let alphabet of alphabets"
       [alphabet]="alphabet"

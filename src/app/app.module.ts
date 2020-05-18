@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
 import { LetterTileComponent } from './board/letter-tile/letter-tile.component';
 import { AlphabetComponent } from './alphabet/alphabet.component';
-import { EventEmitterService } from './utils/event-emitter.service';
+import { PuzzleService } from './utils/puzzle.service';
 import { SpinZoneComponent } from './spin-zone/spin-zone.component';
 
 @NgModule({
@@ -15,13 +15,10 @@ import { SpinZoneComponent } from './spin-zone/spin-zone.component';
     BoardComponent,
     LetterTileComponent,
     AlphabetComponent,
-    SpinZoneComponent
+    SpinZoneComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [EventEmitterService],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule],
+  providers: [PuzzleService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

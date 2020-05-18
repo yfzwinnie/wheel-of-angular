@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as data from '../assets/data/puzzle.json';
+import { PuzzleService } from './utils/puzzle.service';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +7,15 @@ import * as data from '../assets/data/puzzle.json';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  puzzles: [] = (data as any).default;
   alphabets = String.fromCharCode(...Array(123).keys())
     .slice(97)
     .toUpperCase()
     .split('');
-  currentPuzzle: string = this.puzzles[
-    Math.floor(Math.random() * this.puzzles.length)
-  ];
+  isWaitingOnGuess: boolean;
 
-  constructor() {}
+  constructor(public puzzleService: PuzzleService) {
+    this.puzzleService._isWaitingOnGuess.subscribe((isWaitingOnGuess) => {
+      this.isWaitingOnGuess = isWaitingOnGuess;
+    });
+  }
 }

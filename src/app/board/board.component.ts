@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import * as data from '../../assets/data/boardLayout.json';
-import { EventEmitterService } from '../utils/event-emitter.service';
+import { PuzzleService } from '../utils/puzzle.service';
 
 @Component({
   selector: 'app-board',
@@ -12,8 +12,8 @@ export class BoardComponent implements OnInit {
   boardLayout: [[number]] = (data as any).default;
   board = [];
 
-  constructor(private eventEmitterService: EventEmitterService) {
-    this.eventEmitterService.letterGuessed$.subscribe((letter) => {
+  constructor(private puzzleService: PuzzleService) {
+    this.puzzleService.letterGuessed$.subscribe((letter) => {
       if (this.currentPuzzle.toUpperCase().indexOf(letter) > -1) {
         this.showLetter(letter);
       }
@@ -61,7 +61,6 @@ export class BoardComponent implements OnInit {
         }
       })
     );
-    console.log(this.board);
   }
 
   ngOnInit(): void {
